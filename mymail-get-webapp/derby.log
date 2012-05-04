@@ -1,0 +1,16 @@
+----------------------------------------------------------------
+Tue Oct 25 17:07:49 CEST 2011:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-0133-3b9f-843c-0000032b3000 
+on database directory memory:/Users/michi/irian/prŠsentationen/efficient-jsf-and-jpa/beispiele/mymail01/mymail01-webapp/mymail  with class loader WebappClassLoader
+  context: /mymail01-webapp
+  delegate: false
+  repositories:
+----------> Parent Classloader:
+ClassRealm[plugin>org.apache.tomcat.maven:tomcat7-maven-plugin:2.0-SNAPSHOT, parent: sun.misc.Launcher$AppClassLoader@37b90b39]
+ 
+Loaded from file:/Users/michi/.m2/repository/org/apache/derby/derby/10.8.1.2/derby-10.8.1.2.jar
+java.vendor=Apple Inc.
+java.runtime.version=1.6.0_26-b03-383-11A511c
+user.dir=/Users/michi/irian/pra?sentationen/efficient-jsf-and-jpa/beispiele/mymail01/mymail01-webapp
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

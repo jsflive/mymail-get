@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:mc="http://java.sun.com/jsf/composite/mymail">
+<head>
+    <title>Mail List</title>
+</head>
+<body>
+<ui:composition template="/META-INF/templates/template.xhtml">
+    <ui:param name="title" value="#{msgs.titleMain} - #{msgs.titleMailList}"/>
+
+    <ui:define name="content">
+        <h2><h:outputText value="#{msgs.titleMailList}"/></h2>
+        <h:form id="form">
+            <h:commandLink value="#{msgs.fetchMails}" action="#{mailListBean.fetchMails}"/>
+
+            <mc:dataTable id="mails" var="mail" value="#{mailListBean.mails}">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{msgs.from}"/>
+                    </f:facet>
+                    <h:outputText value="#{mail.from}" style="#{mail.read ? '' : 'font-weight: bold'}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{msgs.subject}"/>
+                    </f:facet>
+                    <h:outputText value="#{mail.subject}" style="#{mail.read ? '' : 'font-weight: bold'}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{msgs.subject}"/>
+                    </f:facet>
+                    <h:outputText value="#{mail.date}" style="#{mail.read ? '' : 'font-weight: bold'}">
+                        <f:convertDateTime pattern="dd.MM.yyyy HH:mm"/>
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{msgs.attachments}"/>
+                    </f:facet>
+                    <h:outputText value="#{mail.attachments.size()}" style="#{mail.read ? '' : 'font-weight: bold'}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{msgs.priority}"/>
+                    </f:facet>
+                    <h:outputText value="#{mail.priority}"/>
+                </h:column>
+                <h:column>
+                    <h:link value="#{msgs.show}" outcome="showMail">
+                        <f:param name="id" value="#{mail.id}"/>
+                    </h:link>
+                    &#160;
+                    <h:commandLink value="#{msgs.delete}" action="#{mailListBean.delete(mail)}">
+                        <f:ajax render=":form:mails"/>
+                    </h:commandLink>
+                    &#160;
+                    <h:commandLink value="#{mail.read ? msgs.markNotRead : msgs.markRead}" action="#{mailListBean.switchMailRead(mail)}">
+                        <f:ajax render=":form:mails"/>
+                    </h:commandLink>
+                </h:column>
+            </mc:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

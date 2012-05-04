@@ -1,0 +1,5 @@
+.idea
+.svn
+target/
+*.ipr
+*.iml

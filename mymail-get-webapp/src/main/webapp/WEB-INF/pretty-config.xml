@@ -1,0 +1,16 @@
+<pretty-config xmlns="http://ocpsoft.com/prettyfaces/3.3.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://ocpsoft.com/prettyfaces/3.3.0
+            http://ocpsoft.com/xml/ns/prettyfaces/ocpsoft-pretty-faces-3.3.0.xsd">
+
+    <url-mapping id="mailDetails">
+        <pattern value="/mail/#{/\\d+/ id}/details"/>
+        <view-id value="/faces/showMail.xhtml"/>
+    </url-mapping>
+
+    <url-mapping id="mailList">
+        <pattern value="/mails"/>
+        <view-id value="/faces/mailList.xhtml"/>
+    </url-mapping>
+
+</pretty-config>
